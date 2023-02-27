@@ -1,0 +1,538 @@
+html {
+    font-size: 14px;
+}
+
+body {
+    width: 100vw;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.88rem;
+    background-color: var(--color-background);
+    user-select: none;
+    overflow-x: hidden;
+    color: var(--color-dark);
+}
+
+.container {
+    display: grid;
+    width: 96%;
+    margin: 0 auto;
+    gap: 1.8rem;
+    grid-template-columns: 14rem auto 28rem;
+}
+
+a {
+    color: var(--color-dark);
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+h1 {
+    font-weight: 800;;
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-size: 1.4rem;
+}
+
+h3 {
+    font-size: 0.87rem;
+}
+
+h4 {
+    font-size: 0.8rem;
+}
+
+h5 {
+    font-size: 0.77rem;
+}
+
+small {
+    font-size: 0.75rem;
+}
+
+.profile-photo {
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.text-muted {
+    color: var(--color-info-dark);
+}
+
+p {
+    color: var(--color-dark-variant);
+}
+
+b {
+    color: var(--color-dark);
+}
+
+.primary {
+    color: var(--color-primary);
+}
+
+.danger {
+    color: var(--color-danger);
+}
+
+.success {
+    color: var(--color-success);
+}
+
+.warning {
+    color: var(--color-warning);
+}
+
+/* ============ SIDEBAR ============ */
+
+aside {
+    height: 100vh;
+}
+
+aside .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.4rem;
+}
+
+aside .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--color-dark);
+}
+
+aside .logo img {
+    width: 2.7rem;
+    height: 2.7rem;
+}
+
+aside .close {
+    display: none;
+}
+
+aside .sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 86vh;
+    position: relative;
+    top: 3rem;
+}
+
+aside h3 {
+    font-weight: 500;
+}
+
+aside .sidebar a {
+    display: flex;
+    color: var(--color-info-dark);
+    margin-left: 2rem;
+    gap: 1rem;
+    align-items: center;
+    position: relative;
+    height: 3.7rem;
+    transition: all 300ms ease;
+}
+
+aside .sidebar a span {
+    font-size: 1.rem;
+    transition: all 300ms ease;
+}
+
+aside .sidebar a:last-child {
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+}
+
+aside .sidebar a.active {
+    background: var(--color-light);
+    color: var(--color-primary);
+    margin-left: 0;
+}
+
+aside .sidebar a.active::before {
+    content: '';
+    width: 6px;
+    height: 100%;
+    background: var(--color-primary);
+}
+
+aside .sidebar a.active span {
+    color: var(--color-primary);
+    margin-left: calc(1rem - 3px);
+}
+
+aside .sidebar a:hover {
+    color: var(--color-primary);
+}
+
+aside .sidebar a:hover span {
+    margin-left: 1rem;
+}
+
+aside .sidebar .theme-toggler {
+    position: absolute;
+    background: var(--color-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 1.6rem;
+    width: 4.2rem;
+    cursor: pointer;
+    border-radius: var(--border-radius-1);
+    bottom: 7rem;
+    left: 3.2rem;
+}
+
+aside .sidebar .theme-toggler span {
+    color: var(--color-dark);
+    font-size: 1.2rem;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+aside .sidebar .theme-toggler span.active {
+    background: var(--color-primary);
+    color: white;
+    border-radius: var(--border-radius-1);
+}
+
+aside .sidebar .message-count {
+    background: var(--color-danger);
+    color: var(--color-white);
+    padding: 2px 10px;
+    font-size: 11px;
+    border-radius: var(--border-radius-1);
+}
+
+/* END OF ASIDE */
+
+/* ===== MAIN ===== */
+
+main {
+    margin-top: 1.4rem;
+}
+
+main h2 {
+    font-size: 3rem;
+    color: var(--color-dark);
+}
+
+main p {
+    font-size: 1.1rem;
+}
+
+main .top {
+    margin-bottom: 40px;
+}
+
+main .pet-buttons {
+    display: flex;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+main .search-pet__div {
+    position: relative;
+}
+
+main .search-pet__div span {
+    position: absolute;
+    font-size: 1.8rem;
+    top: 28px;
+    right: 38px;
+    color: var(--color-info-dark);
+}
+
+main .search-pet__div span:hover {
+    cursor: pointer;
+}
+
+main #search-pet__iconbtn {
+    position: absolute;
+    top:0; right:0;
+    z-index:10;
+    border:none;
+    background:transparent;
+}
+
+main #search-pet__input {
+    padding: var(--padding-1);
+    width: 32rem;
+    border-radius: var(--padding-1);
+    font-size: 1.7rem;
+    font-family: 'Poppins';
+    font-weight: 500;
+    margin-right: 20px;
+}
+
+main #register-pet__btn {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-success);
+    text-align: start;
+    width: 22rem;
+    padding: var(--padding-1);
+    border-radius: var(--border-radius-3);
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'Poppins';
+    color: var(--color-white);
+    transition: transform 300ms ease;
+}
+
+main #register-pet__btn span {
+    margin-right: 10px;
+}
+
+main #register-pet__btn:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+main .pet-table h2 {
+    margin-bottom: 0.8rem;
+}
+
+main .pet-table table {
+    color: var(--color-dark);
+    background: var(--color-white);
+    width: 100%;
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+main .pet-table table:hover {
+    box-shadow: none;
+}
+
+main .pet-table table tbody td {
+    font-size: 0.8rem;
+    height: 2.8rem;
+    border-bottom: 1px solid var(--color-light);
+}
+
+main table tbody tr:last-child td {
+    border: none;
+}
+
+main table tbody tr td a {
+  cursor: pointer;
+}
+
+/* END OF MAIN */
+
+/* ============ RIGHT ============ */
+
+.right {
+    margin: 1.4rem;
+}
+
+.right .top {
+    margin-top: 40px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.right .top h1 {
+    color: var(--color-dark);
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.right .top > div {
+    color: var(--color-dark);
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1.2rem;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+.right .top > div:hover {
+    box-shadow: none;
+}
+
+.right .top .pet-ready, .customers-served {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.right .top > div span {
+    background: var(--color-primary);
+    padding: 0.5rem;
+    border-radius: 50%;
+    color: var(--color-white);
+    font-size: 3rem;
+}
+
+.right .top > div h3 {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+}
+
+.right .top > div h1 {
+    margin-top: .5rem;
+    font-size: 3rem;
+}
+
+/* END OF RIGHT */
+
+/* MODALS */
+
+.modal .close-modal {
+  padding: .6rem 1.2rem;
+  border: none;
+  border-radius: .25rem;
+  cursor: pointer;
+  opacity: .9;
+  font-size: 1.3rem;
+  background: transparent;
+  color: var(--color-dark-variant);
+}
+
+.modal .close-modal span {
+  transition: transform 300ms ease;
+}
+
+.modal .close-modal span:hover {
+  transform: scale(1.3);
+  color: var(--color-danger);
+}
+
+.fade,
+.modal {
+  transition: 0.5s;
+  opacity: 1;
+  pointer-events: all;
+}
+
+.fade {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 5;
+}
+
+.modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-white);
+  z-index: 10;
+  width: 700px;
+  height: 650px;
+  padding: 1.2rem;
+  border-radius: var(--border-radius-3);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+
+.modal.hide,
+.fade.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal.hide {
+  top: 0;
+}
+
+.modal-body {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.modal-body label {
+  font-size: 1.1rem;
+}
+
+.modal-body input, select {
+  margin-bottom: 2rem;
+}
+
+.modal-body input, select {
+  color: var(--color-dark-variant);
+  background: var(--color-light);
+  padding: 8px;
+  border-radius: var(--border-radius-3);
+  text-align: center;
+}
+
+.modal-body select {
+  width: 185px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.modal-body__left,
+.modal-body__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: start;
+}
+
+.modal-body__right {
+  border-left: 1px solid #ccc;
+  padding-left: 3.5rem;
+}
+
+.modal form {
+  position: relative;
+}
+
+.modal form button {
+  position: relative;
+  background: var(--color-success);
+  border-radius: var(--border-radius-1);
+  color: var(--color-white);
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 10px;
+  left: 10rem;
+  top: 2.5rem;
+  width: 11rem;
+}
+
+.modal #formAddPet button {
+  left: 15.5rem;
+}
+
+.modal form #deletePetBtn {
+  background-color: var(--color-danger);
+}

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/modals.css">
+    <title>Petshop</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- ASIDE -->
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <img src="assets/images/logo2.png" alt="logo">
+                    <h2>PET<span class="danger">SHOP</span></h2>
+                </div>
+            </div>
+            <div class="sidebar">
+                <a href="#" class="active">
+                    <span class="material-icons-sharp">dashboard</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">message</span>
+                    <h3>Mensagens</h3>
+                    <span class="message-count">26</span>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">settings</span>
+                    <h3>Configurações</h3>
+                </a>
+                <div class="theme-toggler">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+                <a href="./index.html">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3 id="logout-btn">Logout</h3>
+                </a>
+            </div>
+        </aside>
+        <!-- END OF ASIDE -->
+
+        <!-- MAIN -->
+        <main>
+            <div class="top">
+                <h2>Dashboard</h2>
+                <p>É uma honra ter alguém como você junto da nossa equipe.<br>Seja muito bem-vindo, <span id="username"></span>
+            </div>
+            <div class="pet-buttons">
+                <div class="search-pet__div">
+                    <span class="material-icons-sharp">search</span>
+                    <input type="text" id="search-pet__input">
+                </div>
+                <button id="register-pet__btn"><span class="material-icons-sharp">add</span>Cadastrar pet</button>
+            </div>
+            <div class="pet-table">
+                <table id="pet-table__table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome do pet</th>
+                            <th>Espécie</th>
+                            <th>Raça</th>
+                            <th>Altura</th>
+                            <th>Peso</th>
+                            <th>Pelagem</th>
+                            <th>Tipo de tratamento</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        <!-- END OF MAIN -->
+
+        <!-- RIGHT -->
+        <div class="right">
+            <div class="top">
+                <h1>Estatísticas</h1>
+                <div class="pet-ready">
+                    <span class="material-icons-sharp">pets</span>
+                    <h3>Pets atendidos</h3>
+                    <div class="pet-numbers">
+                        <h1></h1>
+                    </div>
+                </div>
+                <div class="customers-served">
+                    <span class="material-icons-sharp">people</span>
+                    <h3>Clientes atendidos</h3>
+                    <div class="customers-numbers">
+                        <h1></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="fade hide"></div>
+    <div class="modal hide">
+        <div class="modal-header">
+            <h1>Cadastrar Pet</h1>
+            <button class="close-modal"><span class="material-icons-sharp">close</span></button>
+        </div>
+        <form action="" id="formAddPet">
+            <div class="modal-body">
+                <div class="modal-body__left">
+                    <label for="animalName">Nome do pet: </label>
+                    <input type="text" name="animalName">
+                    <label for="species">Espécie: </label>
+                    <select name="species" id="">
+                        <option value="">Selecione uma opção</option>
+                        <option value="Cachorro">Cachorro</option>
+                        <option value="Gato">Gato</option>
+                        <option value="Pássaro">Pássaro</option>
+                        <option value="Roedor">Roedor</option>
+                        <option value="Peixe">Peixe</option>
+                    </select>
+                    <label for="breed">Raça: </label>
+                    <input type="text" name="breed">
+                    <label for="height">Altura: </label>
+                    <input type="text" name="height">
+                    <label for="weight">Peso: </label>
+                    <input type="text" name="weight">             
+                </div>
+                <div class="modal-body__right">
+                    <label for="fur">Pelagem: </label>
+                    <select name="fur" id="">
+                        <option value="">Seleciona uma opção</option>
+                        <option value="CURTO">Curto</option>
+                        <option value="LONGO">Longo</option>
+                        <option value="DUPLA">Dupla</option>
+                    </select>
+                    <label for="treatment">Tratamento: </label>
+                    <select name="treatment" id="">
+                        <option value="">Seleciona uma opção</option>
+                        <option value="BANHO">Banho</option>
+                        <option value="HIDRATAÇÃO">Hidratação</option>
+                        <option value="PENTEAR">Pentear</option>
+                        <option value="MANICURE">Manicure</option>
+                        <option value="TOSA">Tosa</option>
+                        <option value="PINTURA">Pintura</option>
+                    </select>
+                    <label for="responsibleName">Nome do responsável: </label>
+                    <input type="text" name="responsibleName" required>
+                    <label for="responsiblePhone">Telefone do responsável: </label>
+                    <input type="tel" name="responsiblePhone" required>
+                    <label for="responsibleEmail">Email do responsável: </label>
+                    <input type="email" name="responsibleEmail" required="true">
+                </div>
+            </div>
+            <button type="submit">Salvar</button>
+        </form>
+    </div>
+
+    <div class="fade hide"></div>
+    <div class="modal hide">
+        <div class="modal-header">
+            <h1>Detalhes</h1>
+            <button class="close-modal"><span class="material-icons-sharp">close</span></button>
+        </div>
+        <form action="" id="formDetailsPet">
+            <div class="modal-body">
+                <div class="modal-body__left">
+                    <input type="hidden" name="id">
+                    <label for="animalName">Nome do pet: </label>
+                    <input type="text" name="animalName">
+                    <label for="species">Espécie: </label>
+                    <select name="species" id="">
+                        <option value="">Selecione uma opção</option>
+                        <option value="Cachorro">Cachorro</option>
+                        <option value="Gato">Gato</option>
+                        <option value="Pássaro">Pássaro</option>
+                        <option value="Roedor">Roedor</option>
+                        <option value="Peixe">Peixe</option>
+                    </select>
+                    <label for="breed">Raça: </label>
+                    <input type="text" name="breed">
+                    <label for="height">Altura: </label>
+                    <input type="text" name="height">
+                    <label for="weight">Peso: </label>
+                    <input type="text" name="weight">             
+                </div>
+                <div class="modal-body__right">
+                    <label for="fur">Pelagem: </label>
+                    <select name="fur" id="">
+                        <option value="">Seleciona uma opção</option>
+                        <option value="CURTO">Curto</option>
+                        <option value="LONGO">Longo</option>
+                        <option value="DUPLA">Dupla</option>
+                    </select>
+                    <label for="treatment">Tratamento: </label>
+                    <select name="treatment" id="">
+                        <option value="">Seleciona uma opção</option>
+                        <option value="BANHO">Banho</option>
+                        <option value="HIDRATAÇÃO">Hidratação</option>
+                        <option value="PENTEAR">Pentear</option>
+                        <option value="MANICURE">Manicure</option>
+                        <option value="TOSA">Tosa</option>
+                        <option value="PINTURA">Pintura</option>
+                    </select>
+                    <label for="responsibleName">Nome do responsável: </label>
+                    <input type="text" name="responsibleName" required>
+                    <label for="responsiblePhone">Telefone do responsável: </label>
+                    <input type="tel" name="responsiblePhone" required>
+                    <label for="responsibleEmail">Email do responsável: </label>
+                    <input type="email" name="responsibleEmail" required>
+                </div>
+            </div>
+            <button type="button" id="deletePetBtn">Excluir</button>
+            <button type="submit" id="updatePetBtn">Atualizar</button>
+        </form>
+    </div>
+
+
+    <script src="/assets/js/events.js" type="module"></script>
+    <script src="/assets/js/PetService.js" type="module"></script>
+    <script src="/assets/js/UserService.js" type="module"></script>t
+</body> 
+
+</html>

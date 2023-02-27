@@ -1,0 +1,140 @@
+@import url('/assets/css/variables.css');
+
+.modal .close-modal {
+    padding: .6rem 1.2rem;
+    border: none;
+    border-radius: .25rem;
+    cursor: pointer;
+    opacity: .9;
+    font-size: 1.3rem;
+    background: transparent;
+    color: var(--color-dark-variant);
+}
+
+.modal .close-modal span {
+    transition: transform 300ms ease;
+}
+
+.modal .close-modal span:hover {
+    transform: scale(1.3);
+    color: var(--color-danger);
+}
+
+.fade,
+.modal {
+    transition: 0.5s;
+    opacity: 1;
+    pointer-events: all;
+}
+
+.fade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 5;
+}
+
+.modal {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-white);
+    z-index: 10;
+    width: 700px;
+    height: 650px;
+    padding: 1.2rem;
+    border-radius: var(--border-radius-3);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+.modal.hide,
+.fade.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal.hide {
+    top: 0;
+}
+
+.modal-body {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.modal-body label {
+    font-size: 1.3rem;
+}
+
+.modal-body input, select {
+    margin-bottom: 2rem;
+}
+
+.modal-body input, select {
+    color: var(--color-dark-variant);
+    background: var(--color-light);
+    padding: 8px;
+    border-radius: var(--border-radius-3);
+    text-align: center;
+}
+
+.modal-body select {
+    background: #f5f0f0;
+    background-size: 15px;
+    width: 185px;
+    text-align: center;
+    cursor: pointer
+}
+
+.modal-body__left,
+.modal-body__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: start;
+}
+
+.modal-body__right {
+    border-left: 1px solid #ccc;
+    padding-left: 5rem;
+}
+
+.modal form {
+    position: relative;
+}
+
+.modal form button {
+    position: relative;
+    background: var(--color-success);
+    border-radius: var(--border-radius-1);
+    color: var(--color-white);
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 10px;
+    left: 12rem;
+    top: 2.5rem;
+    width: 11rem;
+}
+
+.modal #formAddPet button {
+    left: 17.5rem;
+}
+
+.modal form #deletePetBtn {
+    background-color: var(--color-danger);
+}

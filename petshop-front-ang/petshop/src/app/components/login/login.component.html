@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="card">
+      <div class="left">
+          <img src="./../../../assets/images/login-img.png" alt="dog" width="480px">
+      </div>
+      <div class="right">
+          <div class="logo">
+              <img src="./../../../assets/images/logo2.png" alt="logo">
+          </div>
+          <div class="login-form">
+              <h1>Olá, bem vindo!</h1>
+              <form action="">
+                  <div class="login-form__input">
+                      <label for="email">E-mail: </label>
+                      <input type="email" name="email" required>
+                  </div>
+                  <div class="login-form__input">
+                      <label for="">Senha: </label>
+                      <input type="password" name="password" required>
+                  </div>
+                  <div class="error-msg">
+                      <p>Credenciais inválidas! Tente novamente.</p>
+                  </div>
+                  <button type="submit" (click)="onLogin()">Fazer Login</button>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
