@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit{
 
   constructor(
     private authenticateService: AuthenticateService,
+    private userService: UserService,
     private router: Router) {
   }
 
@@ -31,8 +32,7 @@ export class LoginComponent implements OnInit{
     const data = this.authenticateService.login(user);
     data.subscribe((res) => {
       localStorage.setItem('token', res.token);
-      setTimeout(() =>
-      this.router.navigate(['/dashboard']), 200);
+      this.router.navigate(['/dashboard'])
     }, (error) => {
       document.querySelector('.error-msg')?.classList.add('active');
     })

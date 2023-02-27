@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Pet } from 'src/app/pet';
 import { PetService } from 'src/app/pet.service';
@@ -17,15 +17,16 @@ export class DashboardComponent implements OnInit{
   public servedClients: number | undefined;
   public servedPets: number | undefined;
   public petDetails: Pet | undefined;
+  public employeeName: string | undefined;
 
   constructor(
     private petService: PetService,
     private userService: UserService,
-    private router: Router,
+    private router: Router
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.getUsername();
+    await this.getUsername();
     await this.getAllPets();
     this.counter();
   }
@@ -123,11 +124,14 @@ export class DashboardComponent implements OnInit{
 
   // Load employee name
   public async getUsername(): Promise<void> {
-    const userData = await this.userService.getUser().toPromise();
-    const firstname = userData?.firstname;
-
+    const userData = await this.userService.getUser().toPromise()
+    if (!userData) {
+      await this.router.navigate([''])
+    }
+    this.employeeName = userData?.firstname;
     const username = document.querySelector('#username');
-    if (username) username.innerHTML = `${firstname}!`;
+
+    if (username) username.innerHTML = `${this.employeeName}!`
   }
 
   // Logout
