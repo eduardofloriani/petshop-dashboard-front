@@ -13,6 +13,10 @@
         <h3>Dashboard</h3>
       </a>
       <a href="">
+        <span class="material-icons-sharp">folder</span>
+        <h3>Banco de Dados</h3>
+      </a>
+      <a href="">
         <span class="material-icons-sharp">message</span>
         <h3>Mensagens</h3>
         <span class="message-count">26</span>
@@ -59,10 +63,11 @@
             <th>Peso</th>
             <th>Pelagem</th>
             <th>Tipo de tratamento</th>
+            <th>Status</th>
             <th></th>
           </tr>
         </thead>
-        <tbody *ngFor="let pet of allPets">
+        <tbody *ngFor="let pet of dashboardPets">
           <tr data-id="{{ pet.id }}">
             <td>{{ pet.id }}</td>
             <td>{{ pet.animalName }}</td>
@@ -72,6 +77,7 @@
             <td>{{ pet.weight }}</td>
             <td>{{ pet.fur }}</td>
             <td>{{ pet.treatment }}</td>
+            <td><a class="primary petStatus" (click)="finishedService(pet)" (mouseover)="changeStatus()">{{ pet.statusAnimal }}</a></td>
             <td class="petDetails"><a class="warning" (click)="openCloseModal('details', pet)">Detalhes</a></td>
           </tr>
         </tbody>

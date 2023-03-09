@@ -7,6 +7,7 @@ export interface Pet {
   weight: number;
   fur: Fur;
   treatment: Treatment;
+  statusAnimal: StatusAnimal;
   responsibleName: string;
   responsiblePhone: string;
   responsibleEmail: string
@@ -25,4 +26,9 @@ enum Treatment {
   TOSA,
   PINTURA,
   BANHO
+}
+
+enum StatusAnimal {
+  PENDING,
+  FINISHED
 }

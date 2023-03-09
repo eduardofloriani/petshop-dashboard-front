@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Pet } from 'src/app/pet';
 import { PetService } from 'src/app/pet.service';
@@ -11,9 +11,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 
-export class DashboardComponent implements OnInit{
+export class DashboardComponent implements OnInit {
 
   public allPets: Pet[] | undefined = [];
+  public dashboardPets: Pet[] = [];
   public servedClients: number | undefined;
   public servedPets: number | undefined;
   public petDetails: Pet | undefined;
@@ -22,7 +23,7 @@ export class DashboardComponent implements OnInit{
     private petService: PetService,
     private userService: UserService,
     private router: Router,
-  ) {}
+  ) { }
 
   async ngOnInit(): Promise<void> {
     this.getUsername();
@@ -34,6 +35,11 @@ export class DashboardComponent implements OnInit{
   public async getAllPets(): Promise<void> {
     const response = await this.petService.getAllPets().toPromise();
     this.allPets = response;
+
+    this.dashboardPets = [];
+    this.allPets?.forEach((pet) => {
+      if (pet.statusAnimal.toString() === 'PENDING') this.dashboardPets?.push(pet);
+    })
   };
 
   // Add new Pet
@@ -47,10 +53,18 @@ export class DashboardComponent implements OnInit{
     this.counter();
   }
 
+  //Update pet
   public async updatePet(formValues: Pet): Promise<void> {
     await this.petService.updatePet(formValues).toPromise();
     await this.getAllPets();
     this.openCloseModal('details');
+    this.counter();
+  }
+
+  //Change status
+  public async finishedService(pet: Pet): Promise<void> {
+    await this.petService.finishedService(pet).toPromise();
+    await this.getAllPets();
     this.counter();
   }
 
@@ -64,8 +78,8 @@ export class DashboardComponent implements OnInit{
 
   // Update pet and customers counters
   public counter(): void {
-    this.servedPets = this.allPets?.length;
-    const allCustomers = this.allPets?.reduce((accumulator: Pet[], pet: Pet) => {
+    this.servedPets = this.dashboardPets?.length;
+    const allCustomers = this.dashboardPets?.reduce((accumulator: Pet[], pet: Pet) => {
       const alreadyExists = accumulator.some(u => u.responsibleEmail === pet.responsibleEmail);
 
       if (!alreadyExists) {
@@ -102,19 +116,19 @@ export class DashboardComponent implements OnInit{
   // Search Pets
   public searchPets(key: string): void {
     const results: Pet[] = [];
-    if (this.allPets) {
-      for (const pet of this.allPets) {
+    if (this.dashboardPets) {
+      for (const pet of this.dashboardPets) {
         if (pet.animalName.toLowerCase().indexOf(key.toLowerCase()) !== -1
-        || pet.species.toLowerCase().indexOf(key.toLowerCase()) !== -1
-        || pet.breed.toLowerCase().indexOf(key.toLowerCase()) !== -1
-        || pet.responsibleEmail.toLowerCase().indexOf(key.toLowerCase()) !== -1
-        || pet.responsibleName.toLowerCase().indexOf(key.toLowerCase()) !== -1
-        || pet.responsiblePhone.toLowerCase().indexOf(key.toLowerCase()) !== -1){
+          || pet.species.toLowerCase().indexOf(key.toLowerCase()) !== -1
+          || pet.breed.toLowerCase().indexOf(key.toLowerCase()) !== -1
+          || pet.responsibleEmail.toLowerCase().indexOf(key.toLowerCase()) !== -1
+          || pet.responsibleName.toLowerCase().indexOf(key.toLowerCase()) !== -1
+          || pet.responsiblePhone.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
           results.push(pet)
         }
       }
 
-      this.allPets = results;
+      this.dashboardPets = results;
       if (results.length === 0 || !key) {
         this.getAllPets();
       }
@@ -129,6 +143,20 @@ export class DashboardComponent implements OnInit{
     const username = document.querySelector('#username');
     if (username) username.innerHTML = `${firstname}!`;
   }
+
+  // Change status of TD
+  public changeStatus(): void {
+    const td = document.querySelectorAll('.petStatus');
+    td.forEach((el) => {
+      el.addEventListener('mouseenter', () => {
+        el.innerHTML = `<span class="material-icons-sharp">check</span>`;
+      })
+      el.addEventListener('mouseleave', () => {
+        el.innerHTML = 'PENDING';
+      })
+    })
+  }
+
 
   // Logout
   public logout(): void {
